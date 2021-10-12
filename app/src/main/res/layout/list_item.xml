@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50dp"
+            android:text="Name"
+            android:paddingRight="50dp"
+            android:id="@+id/task_name"/>
+        <CheckBox
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:id="@+id/is_done"
+           />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Delete"
+            android:id="@+id/delete"
+            />
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
