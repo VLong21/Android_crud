@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<TaskModel> taskModel;
-    private String url = "http://10.0.2.2:3000/task";
+    private String url = "";
 
     public ActivityAdapter(Context context, ArrayList<TaskModel> taskModel){
         this.context = context;
@@ -37,7 +38,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull ActivityAdapter.MyViewHolder holder, int position) {
         holder.task_name.setText(taskModel.get(position).getName());
-        holder.isDone.setText(String.valueOf(taskModel.get(position).isDone()));
+        holder.isDone.setChecked(taskModel.get(position).isDone());
     }
 
     @Override
@@ -48,12 +49,13 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView task_name, isDone;
+        private TextView task_name;
+        private CheckBox isDone;
 
         public MyViewHolder(@NonNull View itemview){
             super(itemview);
             task_name = (TextView) itemview.findViewById(R.id.task_name);
-            isDone = (TextView) itemview.findViewById(R.id.is_done);
+            isDone = (CheckBox) itemview.findViewById(R.id.is_done);
         }
 
     }

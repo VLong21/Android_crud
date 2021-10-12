@@ -1,6 +1,7 @@
 package com.example.api_crud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         setContentView(R.layout.activity_main);
         refresh = (SwipeRefreshLayout) findViewById(R.id.swipedown);
         recyclerView = (RecyclerView) findViewById(R.id.list);
+
         dialog = new Dialog(this);
         refresh.setOnRefreshListener(this);
         refresh.post(new Runnable() {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         task.setName(jsonObject.getString("name"));
                         task.setDone(jsonObject.getBoolean("isdone"));
                         Log.v("log:",jsonObject.getString("name"));
+                        Log.v("log:", String.valueOf(jsonObject.getBoolean("isdone")));
                         taskModel.add(task);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -86,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     private void adapterPush(ArrayList<TaskModel> taskModel) {
         activityAdapter = new ActivityAdapter(this, taskModel);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(activityAdapter);
     }
 
     @Override
